@@ -1,0 +1,259 @@
+@startuml
+
+
+class Admin_User extends AppCompatActivity{
+Button admin, user
+ImageView bookflix
+
+onCreate();
+}
+
+class AdminLogin extends AppCompatActivity{
+
+    Button login, back;
+    EditText adminName, adminPass;
+
+    String name = "admin";
+    String password = "1234";
+
+  onCreate()
+    goToAdminPanel()
+    goToMainPanel()
+}
+
+class AdminPanel extends AppCompatActivity, BookDatabaseManager, UserDatabaseManager {
+
+    public TabHost tabHost;
+
+    public EditText bookID, bookName, bookAuthor, bookPrice, bookYear, usernameDelete;
+    public Spinner bookGenre, updateGenreSpinner;
+
+    public EditText bookID_2, bookName_2;
+
+    Button add, displayUser;
+
+    ListView admin_tab1_listView, admin_tab2_listView, admin_tab3_listView, admin_tab4_listView, user_tab3_listView;
+
+    public EditText bookID_3, bookName_3, bookAuthor_3, bookPrice_3, bookYear_3;
+
+    BookDatabaseManager bookManager;
+
+    ArrayList<String> genreList = new ArrayList<>();
+    ArrayAdapter<String> genreAdapter;
+
+    ArrayAdapter<String> showAdapter;
+
+    SQLiteDatabase database;
+    String path;
+    String result;
+
+    UserDatabaseManager userManager;
+    String userPath;
+    SQLiteDatabase userDatabase;
+    ArrayAdapter<String> userAdapter;
+
+    String[] genres = {"Action and adventure", "Classic","Comic", "Crime", "Drama", "Fantasy",
+    "Horror", "Mystery", "Science fiction"};
+
+
+    onCreate()
+    onCreateOptionsMenu()
+    populateMyFirstMenu()
+    onOptionsItemSelected()
+    applyMenuOptionItem()
+    onCreateContextMenu()
+    onContextItemSelected()
+    goToMainPanel()
+    insert(View v)
+    display()
+    userDisplay()
+    delete()
+    userDelete()
+    update()
+
+
+
+
+
+}
+
+class BookDatabaseManager extends SQLiteOpenHelper {
+
+
+    private static final String DB_NAME = "BOOKS";
+    private static final int DB_VERSION = 2;
+    private static final String TABLE = "books_10";
+
+    private static final String ID = "id";
+    private static final String NAME = "name";
+    private static final String AUTHOR = "author";
+    private static final String GENRE = "genre";
+    private static final String PRICE = "price";
+    private static final String YEAR = "year";
+
+    private static final String COMMAND = "CREATE TABLE " + TABLE + " (\n" +
+            "    " + ID + " INTEGER NOT NULL CONSTRAINT employees_pk PRIMARY KEY AUTOINCREMENT,\n" +
+            "    " + NAME + " varchar(255) NOT NULL,\n" +
+            "    " + AUTHOR + " varchar(255) NOT NULL,\n" +
+            "    " + GENRE + " varchar(255) NOT NULL,\n" +
+            "    " + PRICE + " INTEGER NOT NULL,\n" +
+            "    " + YEAR + " INTEGER NOT NULL\n" +
+             ");";
+
+BookDatabaseManager(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version)
+BookDatabaseManager(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version, @Nullable DatabaseErrorHandler errorHandler)
+BookDatabaseManager(Context context)
+onCreate()
+onUpgrade()
+insert()
+delete()
+display()
+searchGenre()
+update()
+
+
+    }
+
+class MainActivity extends AppCompatActivity {
+        Button admin, user;
+
+        onCreate()
+        goToAdminPanel()
+        goToUserPanel()
+
+        }
+
+class PaymentClass extends AppCompatActivity {
+
+            //defining objects
+            TextView amount, time, edtPass;
+            Button exit, submit, password;
+
+            onCreate()
+            exit()
+            systemDate()
+
+}
+
+
+class UserDatabaseManager extends SQLiteOpenHelper {
+
+    private static final String DB_NAME = "USERS";
+    private static final int DB_VERSION = 2;
+    private static final String TABLE = "users";
+
+    private static final String USERNAME = "username";
+    private static final String NAME = "name";
+    private static final String SURNAME = "surname";
+    private static final String EMAIL = "email";
+    private static final String PASSWORD = "password";
+
+    private static final String COMMAND = "CREATE TABLE " + TABLE + " (\n" +
+            "    " + USERNAME + " varchar(255) NOT NULL,\n" +
+            "    " + NAME + " varchar(255) NOT NULL,\n" +
+            "    " + SURNAME + " varchar(255) NOT NULL,\n" +
+            "    " + EMAIL + " varchar(255) NOT NULL,\n" +
+            "    " + PASSWORD + " varchar(255) NOT NULL\n" +
+            ");";
+
+            UserDatabaseManager(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version)
+            UserDatabaseManager(Context context)
+            onCreate()
+            onUpgrade()
+            insert()
+            delete()
+            display()
+            check()
+            update()
+}
+
+class UserLogin extends AppCompatActivity {
+
+    EditText name, pass;
+    Button login, back, signup;
+    UserDatabaseManager userManager;
+
+    SQLiteDatabase database;
+
+    String path;
+
+    onCreate()
+    goToUserPanel()
+    goToMainPanel()
+    goToUserSignup()
+    }
+
+    class UserPanel extends AppCompatActivity, BookDatabaseManager {
+
+        TabHost tabHost;
+
+        ListView user_tab2_listView, user_tab3_listView;
+
+        BookDatabaseManager bookManager;
+        SQLiteDatabase database;
+        String path;
+        ArrayAdapter<String> showAdapter;
+        ArrayAdapter<String> displayAllAdapter;
+
+        UserDatabaseManager userManager;
+        String userPath;
+        SQLiteDatabase userDatabase;
+        ArrayAdapter<String> userAdapter;
+
+        EditText updateUsername, updateName, updateSurname, updateEmail, updatePassword;
+
+        Button pay, reset, exit;
+
+        String result;
+        String resultAll;
+
+        TextView tab3_textView;
+
+        String[] genres = {"Action and adventure", "Classic","Comic", "Crime", "Drama", "Fantasy",
+                "Horror", "Mystery", "Science fiction"};
+        ArrayList<String> genreList = new ArrayList<>();
+        ArrayAdapter<String> genreAdapter;
+
+        Spinner searchSpinner;
+
+        ArrayAdapter<String> user_tab3_adapter;
+        ArrayList<String> tab3_lW = new ArrayList<>();
+
+        ArrayList<String> searchBooks = new ArrayList<>();
+        ArrayAdapter<String> bookSearchAdapter;
+
+        int total = 0;
+
+        onCreate()
+        payment()
+        onActivityResult()
+        filter()
+        userDisplayBook()
+        delete()
+        update()
+        onCreateOptionsMenu()
+        populateMyFirstMenu()
+        onOptionsItemSelected()
+        applyMenuOptionItem()
+        onCreateContextMenu()
+        onContextItemSelected()
+        exit()
+}
+
+
+class UserSignup extends AppCompatActivity {
+
+    EditText username, name, surname, email, password;
+    Button signup;
+
+    UserDatabaseManager userManager;
+    SQLiteDatabase database;
+
+    String path;
+
+    onCreate()
+    insert()
+    signUp()
+
+    }
+@enduml
