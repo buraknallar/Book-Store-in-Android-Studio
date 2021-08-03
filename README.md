@@ -44,7 +44,7 @@ intent. And there is a button for payment. With this button, an intent is openin
 customers credit card information is asked. This intent has a countdown and three buttons.
 There are MenuItem in every page to Logout.
 
-![alt text](https://github.com/buraknallar/Book-Store-in-Android-Studio//blob/main/databases%20and%20UML/UML.png)
+![alt text](https://github.com/buraknallar/Book-Store-in-Android-Studio/blob/main/databases%20and%20UML/UML.png)
 
 # Used Tools
 •	Button
